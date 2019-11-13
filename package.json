@@ -1,0 +1,19 @@
+{
+  "name": "HootGameEngine",
+  "version": "1.0.0",
+  "description": "A 2D JavaScript game engine.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npx webpack --config webpack.config.js"
+  },
+  "keywords": [],
+  "author": "Patrick Carroll",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
