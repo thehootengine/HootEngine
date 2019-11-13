@@ -48,6 +48,47 @@ class Display {
          */
         this.context = this.canvas.getContext("2d");
 
+
+        this.parent = document.getElementById(this.engine.getConfig().getParent()) || document.body;
+
+
+        /**
+         * @name Hoot.Graphics.Display#initialized - Has the canvas already been initialized.
+         * @type {Boolean}
+         */
+        this.initialized = false;
+
+
+        this.init();
+    }
+
+
+    init() {
+
+        //Smoothing
+        this.context.imageSmoothingEnabled = this.engine.getConfig().getSmoothingEnabled();
+
+        //Background or Clear Color
+        this.canvas.style.backgroundColor = this.engine.getConfig().getBackgroundColor();
+
+        //Size
+        this.canvas.width = this.engine.getConfig().getWidth();
+        this.canvas.height = this.engine.getConfig().getHeight();
+
+
+        if (document.readyState === "complete") {
+            this.parent.appendChild(this.canvas);
+        }else {
+            window.onload = function() {
+
+                this.parent.appendChild(this.canvas);
+
+            }.bind(this);
+        }
+
+        //END
+        this.initialized = true;
+
     }
 
 

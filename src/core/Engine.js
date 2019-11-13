@@ -59,6 +59,15 @@ class Engine {
 
 
     /**
+     * @method Hoot.Core.Engine#getConfig
+     * @returns {Hoot.Core.Config}
+     */
+    getConfig() {
+        return this.config;
+    }
+
+
+    /**
      * @method Hoot.Core.Engine#getDisplay
      * @returns {Hoot.Graphics.Display}
      */

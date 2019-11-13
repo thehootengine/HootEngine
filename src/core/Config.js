@@ -24,12 +24,15 @@ class Config {
         }
 
 
+        let display = config.display || {};
+
+
         /**
          * @name Hoot.Core.Config#parent - The parent element of the display's canvas element.
-         * @type {String}
+         * @type {String | Element}
          * @readonly
          */
-        this.parent = this.fix("parent", config, null);
+        this.parent = this.fix("parent", display, null);
 
 
         /**
@@ -37,7 +40,7 @@ class Config {
          * @type {Number}
          * @readonly
          */
-        this.width = this.fix("width", config, null);
+        this.width = this.fix("width", display, 800);
 
 
         /**
@@ -45,7 +48,15 @@ class Config {
          * @type {Number}
          * @readonly
          */
-        this.height = this.fix("height", config, null);
+        this.height = this.fix("height", display, 600);
+
+
+        /**
+         * @name Hoot.Core.Config#smoothing - Should the display's pixels be smoothed or should pixel art stay crisp.
+         * @type {Boolean}
+         * @readonly
+         */
+        this.smoothingEnabled = this.fix("smoothingEnabled", display, null);
 
     }
 
@@ -94,6 +105,24 @@ class Config {
      */
     getHeight() {
         return this.height;
+    }
+
+
+    /**
+     * @method Hoot.Core.Config#getSmoothingEnabled - Returns the config's smoothingEnabled field value.
+     * @returns {Boolean}
+     */
+    getSmoothingEnabled() {
+        return this.smoothingEnabled;
+    }
+
+
+    /**
+     * @method Hoot.Core.Config#getBackgroundColor - Returns the config's backgroundColor field value.
+     * @returns {String}
+     */
+    getBackgroundColor() {
+        return this.backgroundColor;
     }
 
 }
