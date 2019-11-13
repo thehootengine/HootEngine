@@ -28,6 +28,14 @@ class Engine {
 
 
         /**
+         * @name Hoot.Core.Engine#config - Configures the entire game engine.
+         * @type {Hoot.Core.Config}
+         * @readonly
+         */
+        this.config = new Hoot.Core.Config(config);
+
+
+        /**
          * @name Hoot.Core.Engine#display - The display of the game.
          * @type {Hoot.Graphics.Display}
          * @readonly

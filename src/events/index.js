@@ -5,7 +5,7 @@
  * @namespace Hoot.Events
  */
 const Events = {
-    EventEmitter: require("./EventHandler.js")
+    EventHandler: require("./EventHandler.js")
 };
 
 
