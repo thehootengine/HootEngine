@@ -3,15 +3,16 @@
 
 /**
  * @classdesc
+ * Manages all the images that are loaded or being loaded or in queue and are waiting to be loaded.
  *
- * @class Manager
- * @memberOf Hoot.Sprites
+ * @class ImageManager
+ * @memberOf Hoot.Loader
  * @constructor
  * @since 1.0.0
  *
  * @param {Hoot.Core.Engine} [Engine] - The game engine itself.
  */
-class Manager {
+class ImageManager {
 
     /*
      * Constructor
@@ -19,7 +20,7 @@ class Manager {
     constructor(engine) {
 
         /**
-         * @name Hoot.Sprites.Manager#events - The event handler that manages/handles all the events.
+         * @name Hoot.Loader.ImageManager#events - The event handler that manages/handles all the events.
          * @type {Hoot.Events.EventHandler}
          * @readonly
          */
@@ -27,7 +28,7 @@ class Manager {
 
 
         /**
-         * @name Hoot.Sprites.Manager#engine - The game engine itself.
+         * @name Hoot.Loader.ImageManager#engine - The game engine itself.
          * @type {Hoot.Core.Engine}
          * @readonly
          */
@@ -35,14 +36,14 @@ class Manager {
 
 
         /**
-         * @name Hoot.Sprites.Manager#sprites - All of the sprites being managed by this class.
+         * @name Hoot.Loader.ImageManager#images - All of the images being managed.
          * @type {Array}
          */
-        this.sprites = [];
+        this.images = [];
 
 
         /**
-         * @name Hoot.Sprites.Manager#initialized - Has the sprite manager class been initialized.
+         * @name Hoot.Loader.ImageManager#initialized - Has the image manager been initialized.
          * @type {boolean}
          */
         this.initialized = false;
@@ -55,25 +56,27 @@ class Manager {
      */
 
     /**
-     * @method Hoot.Sprites.Manager#init - Initializes the sprite manager class.
+     * @method Hoot.Loader.ImageManager#init - Initialize the image manager class.
      */
     init() {
 
         //END
-        console.log("Sprite manager initialized!");
+        console.log("Image Manager initialized!");
         this.initialized = true;
 
     }
 
 
     /**
-     * @method Hoot.Sprites.Manager#addSprite - Add a sprite to be managed by this class.
+     * @method Hoot.Loader.ImageManager#loadImage - Loads an image that can be used by sprites.
      *
-     * @param {Hoot.Sprites.Sprite} [Sprite]
+     * @param {Hoot.Loader.Image} [Image]
      */
-    addSprite(sprite) {
+    loadImage(image) {
 
-        this.sprites.push(sprite);
+        this.images.push(image);
+
+        image.load();
 
     }
 
@@ -83,7 +86,7 @@ class Manager {
      */
 
     /**
-     * @method Hoot.Sprites.Manager#getEvents
+     * @method Hoot.Loader.ImageManager#getEvents
      * @returns {Hoot.Events.EventHandler}
      */
     getEvents() {
@@ -92,7 +95,7 @@ class Manager {
 
 
     /**
-     * @method Hoot.Sprites.Manager#getEngine
+     * @method Hoot.Loader.ImageManager#getEngine
      * @returns {Hoot.Core.Engine}
      */
     getEngine() {
@@ -101,16 +104,16 @@ class Manager {
 
 
     /**
-     * @method Hoot.Sprites.Manager#getSprites
+     * @method Hoot.Loader.ImageManager#getImages
      * @returns {Array}
      */
-    getSprites() {
-        return this.sprites;
+    getImages() {
+        return this.images;
     }
 
 
     /**
-     * @method Hoot.Sprites.Manager#getInitialized
+     * @method Hoot.Loader.ImageManager#getInitialized
      * @returns {boolean}
      */
     getInitialized() {
@@ -121,4 +124,4 @@ class Manager {
 
 
 //Export
-module.exports = Manager;
+module.exports = ImageManager;

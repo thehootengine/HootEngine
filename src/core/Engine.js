@@ -44,6 +44,22 @@ class Engine {
 
 
         /**
+         * @name Hoot.Core.Engine#imageManager - Manages all the images that are loaded or being loaded.
+         * @type {Hoot.Loader.ImageManager}
+         * @readonly
+         */
+        this.imageManager = new Hoot.Loader.ImageManager(this);
+
+
+        /**
+         * @name Hoot.Core.Engine#spriteManager - Manages all the game's sprites.
+         * @type {Hoot.Sprites.Manager}
+         * @readonly
+         */
+        this.spriteManager = new Hoot.Sprites.Manager(this);
+
+
+        /**
          * @name Hoot.Core.Engine#objectManager - Manages all the game's objects.
          * @type {Hoot.Objects.Manager}
          * @readonly
@@ -109,6 +125,12 @@ class Engine {
         //Display
         this.display.init();
 
+        //Image-Manager
+        this.imageManager.init();
+
+        //Sprite-Manager
+        this.spriteManager.init();
+
         //Object-Manager
         this.objectManager.init();
 
@@ -147,6 +169,24 @@ class Engine {
      */
     getDisplay() {
         return this.display;
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#getImageManager
+     * @returns {Hoot.Loader.ImageManager}
+     */
+    getImageManager() {
+        return this.imageManager;
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#getSpriteManager
+     * @returns {Hoot.Sprites.Manager}
+     */
+    getSpriteManager() {
+        return this.spriteManager;
     }
 
 

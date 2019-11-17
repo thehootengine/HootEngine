@@ -61,7 +61,7 @@ class Manager {
     init() {
 
         //END
-        console.log("Manager initialized!");
+        console.log("Object manager initialized!");
         this.initialized = true;
 
     }
