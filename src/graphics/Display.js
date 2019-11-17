@@ -32,7 +32,7 @@ class Display {
          * @type {Hoot.Core.Engine}
          * @readonly
          */
-        this.engine = engine || null;
+        this.engine = engine;
 
 
         /**
@@ -49,6 +49,10 @@ class Display {
         this.context = this.canvas.getContext("2d");
 
 
+        /**
+         * @name Hoot.Graphics.Display#parent - The parent element where the canvas will be appended too.
+         * @type {HTMLElement}
+         */
         this.parent = document.getElementById(this.engine.getConfig().getParent()) || document.body;
 
 
@@ -59,10 +63,18 @@ class Display {
         this.initialized = false;
 
 
+        //END
         this.init();
     }
 
 
+    /*
+     * Methods
+     */
+
+    /**
+     * @method Hoot.Graphics.Display#init - Initializes the display class.
+     */
     init() {
 
         //Smoothing
@@ -75,19 +87,24 @@ class Display {
         this.canvas.width = this.engine.getConfig().getWidth();
         this.canvas.height = this.engine.getConfig().getHeight();
 
-
-        if (document.readyState === "complete") {
-            this.parent.appendChild(this.canvas);
-        }else {
-            window.onload = function() {
-
-                this.parent.appendChild(this.canvas);
-
-            }.bind(this);
-        }
+        //Append
+        this.parent.appendChild(this.canvas);
 
         //END
+        console.log("Display initialized!");
         this.initialized = true;
+
+    }
+
+
+    /**
+     * @method Hoot.Graphics.Display#drawObject - Draws an object onto the canvas.
+     *
+     * @param {Hoot.Objects.Object} object - The object that will be drawn onto the screen.
+     */
+    drawObject(object) {
+
+
 
     }
 
@@ -129,6 +146,24 @@ class Display {
      */
     getContext() {
         return this.context;
+    }
+
+
+    /**
+     * @method Hoot.Graphics.Display#getParent
+     * @returns {HTMLElement}
+     */
+    getParent() {
+        return this.parent;
+    }
+
+
+    /**
+     * @method Hoot.Graphics.Display#getInitialized
+     * @returns {Boolean}
+     */
+    getInitialized() {
+        return this.initialized;
     }
 
 }

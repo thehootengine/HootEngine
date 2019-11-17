@@ -42,6 +42,77 @@ class Engine {
          */
         this.display = new Hoot.Graphics.Display(this);
 
+
+        /**
+         * @name Hoot.Core.Engine#objectManager - Manages all the game's objects.
+         * @type {Hoot.Objects.Manager}
+         * @readonly
+         */
+        this.objectManager = new Hoot.Objects.Manager(this);
+
+
+        /**
+         * @method Hoot.Core.Engine#booted - Has the engine been booted.
+         * @type {boolean}
+         */
+        this.booted = false;
+
+
+        /**
+         * @method Hoot.Core.Engine#initialized - Has the engine been initialized.
+         * @type {boolean}
+         */
+        this.initialized = false;
+
+
+        //END
+        this.boot();
+
+    }
+
+
+    /*
+     * Methods
+     */
+
+    /**
+     * @method Hoot.Core.Engine#boot - Part of the engine's startup process.
+     */
+    boot() {
+
+        if (document.readyState === "complete") {
+
+            this.init();
+
+        }else {
+
+            window.onload = function() {
+
+                this.init();
+
+            }.bind(this);
+
+        }
+
+        //END
+        console.log("Engine booted!");
+        this.booted = true;
+
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#init - Part of the engine's startup process.
+     */
+    init() {
+
+        //Display
+        this.display.init();
+
+        //END
+        console.log("Engine initialized!");
+        this.initialized = true;
+
     }
 
 
@@ -73,6 +144,24 @@ class Engine {
      */
     getDisplay() {
         return this.display;
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#getBooted
+     * @returns {boolean}
+     */
+    getBooted() {
+        return this.booted;
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#getInitialized
+     * @returns {Boolean|boolean}
+     */
+    getInitialized() {
+        return this.initialized;
     }
 
 }
