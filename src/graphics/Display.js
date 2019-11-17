@@ -57,14 +57,11 @@ class Display {
 
 
         /**
-         * @name Hoot.Graphics.Display#initialized - Has the canvas already been initialized.
-         * @type {Boolean}
+         * @name Hoot.Graphics.Display#initialized - Has the display already been initialized.
+         * @type {boolean}
          */
         this.initialized = false;
 
-
-        //END
-        this.init();
     }
 
 

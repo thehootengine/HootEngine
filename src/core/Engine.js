@@ -109,6 +109,9 @@ class Engine {
         //Display
         this.display.init();
 
+        //Object-Manager
+        this.objectManager.init();
+
         //END
         console.log("Engine initialized!");
         this.initialized = true;
@@ -144,6 +147,15 @@ class Engine {
      */
     getDisplay() {
         return this.display;
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#getObjectManager
+     * @returns {Hoot.Objects.Manager}
+     */
+    getObjectManager() {
+        return this.objectManager;
     }
 
 

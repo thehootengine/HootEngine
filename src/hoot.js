@@ -8,7 +8,8 @@ const Hoot = {
     Core: require("./core"),
     Events: require("./events"),
     Graphics: require("./graphics"),
-    Objects: require("./objects")
+    Objects: require("./objects"),
+    Sprites: require("./sprites")
 };
 
 
