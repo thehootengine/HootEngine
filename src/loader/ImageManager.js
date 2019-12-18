@@ -39,14 +39,14 @@ class ImageManager {
          * @name Hoot.Loader.ImageManager#images - All of the images being managed.
          * @type {Array}
          */
-        this.images = [];
+        this.imageObjects = [];
 
 
         /**
          * @name Hoot.Loader.ImageManager#initialized - Has the image manager been initialized.
          * @type {boolean}
          */
-        this.initialized = false;
+        this.isInitialized = false;
 
     }
 
@@ -61,8 +61,10 @@ class ImageManager {
     init() {
 
         //END
-        console.log("Image Manager initialized!");
+        console.log("Image manager initialized!");
         this.initialized = true;
+
+        this.events.emit("init", { imageManager: this });
 
     }
 
@@ -72,11 +74,11 @@ class ImageManager {
      *
      * @param {Hoot.Loader.Image} [Image]
      */
-    loadImage(image) {
+    loadImage(imageObject) {
 
-        this.images.push(image);
+        this.imageObjects.push(imageObject);
 
-        image.load();
+        imageObject.load();
 
     }
 
@@ -117,7 +119,7 @@ class ImageManager {
      * @returns {boolean}
      */
     getInitialized() {
-        return this.initialized;
+        return this.isInitialized;
     }
 
 }

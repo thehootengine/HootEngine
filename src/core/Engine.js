@@ -3,14 +3,14 @@
 
 /**
  * @classdesc
- * The engine class handles and manages all of the different components of the game.
+ * The 'Engine' class handles and manages all of the different game components.
  *
  * @class Engine
  * @memberOf Hoot.Core
  * @constructor
  * @since 1.0.0
  *
- * @param {object} [Config] - Configures the engine and it's components.
+ * @param {object} [Config] - Configures the engine, and it's sub-components.
  */
 class Engine {
 
@@ -68,21 +68,21 @@ class Engine {
 
 
         /**
-         * @method Hoot.Core.Engine#booted - Has the engine been booted.
-         * @type {boolean}
-         */
-        this.booted = false;
-
-
-        /**
          * @method Hoot.Core.Engine#initialized - Has the engine been initialized.
          * @type {boolean}
          */
-        this.initialized = false;
+        this.isInitialized = false;
+
+
+        /**
+         * @method Hoot.Core.Engine#booted - Has the engine been booted.
+         * @type {boolean}
+         */
+        this.isBooted = false;
 
 
         //END
-        this.boot();
+        this.init();
 
     }
 
@@ -92,35 +92,35 @@ class Engine {
      */
 
     /**
-     * @method Hoot.Core.Engine#boot - Part of the engine's startup process.
+     * @method Hoot.Core.Engine#init - Part of the engine's startup process.
      */
-    boot() {
+    init() {
 
         if (document.readyState === "complete") {
 
-            this.init();
+            this.boot();
 
         }else {
 
             window.onload = function() {
 
-                this.init();
+                this.boot();
 
             }.bind(this);
 
         }
 
         //END
-        console.log("Engine booted!");
-        this.booted = true;
+        console.log("Engine initialized!");
+        this.isInitialized = true;
 
     }
 
 
     /**
-     * @method Hoot.Core.Engine#init - Part of the engine's startup process.
+     * @method Hoot.Core.Engine#boot - Part of the engine's startup process.
      */
-    init() {
+    boot() {
 
         //Display
         this.display.init();
@@ -134,9 +134,10 @@ class Engine {
         //Object-Manager
         this.objectManager.init();
 
+
         //END
-        console.log("Engine initialized!");
-        this.initialized = true;
+        console.log("Engine booted!");
+        this.isBooted = true;
 
     }
 
@@ -200,20 +201,20 @@ class Engine {
 
 
     /**
-     * @method Hoot.Core.Engine#getBooted
-     * @returns {boolean}
-     */
-    getBooted() {
-        return this.booted;
-    }
-
-
-    /**
      * @method Hoot.Core.Engine#getInitialized
      * @returns {Boolean|boolean}
      */
     getInitialized() {
-        return this.initialized;
+        return this.isInitialized;
+    }
+
+
+    /**
+     * @method Hoot.Core.Engine#getBooted
+     * @returns {boolean}
+     */
+    getBooted() {
+        return this.isBooted;
     }
 
 }

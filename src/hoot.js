@@ -10,7 +10,8 @@ const Hoot = {
     Graphics: require("./graphics"),
     Loader: require("./loader"),
     Objects: require("./objects"),
-    Sprites: require("./sprites")
+    Sprites: require("./sprites"),
+    States: require("./states")
 };
 
 

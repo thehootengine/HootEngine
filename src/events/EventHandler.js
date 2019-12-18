@@ -9,8 +9,6 @@
  * @memberOf Hoot.Events
  * @constructor
  * @since 1.0.0
- *
- * @see Hoot.Core.Game#events
  */
 class EventHandler {
 

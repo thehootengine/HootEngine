@@ -5,7 +5,7 @@
  * @namespace Hoot.Loader
  */
 const Loader = {
-    Image: require("./Image.js"),
+    ImageObject: require("./ImageObject.js"),
     ImageManager: require("./ImageManager.js")
 };
 
